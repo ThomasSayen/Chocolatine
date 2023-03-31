@@ -5,3 +5,5 @@ ssh-keygen -t ed25519 -C "email address"
 
 Go in the repository's settings->Secrets and variables->Actions->New repository secret.
 Create the secret , name it (for instance SSH) and copy-paste the private SSH key (including the ---BEGIN OPENSSH PRIVATE KEY---, same for the end).
+
+Create a YAML file to do the mirroring (see https://github.com/marketplace/actions/mirroring-repository).
