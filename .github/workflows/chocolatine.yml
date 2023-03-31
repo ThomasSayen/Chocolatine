@@ -10,10 +10,15 @@ on:
 
 env:
   MIRROR_URL: "git@github.com:EpitechPromo2027/B-DOP-200-LYN-2-1-chocolatine-thomas.sayen.git"
+  EXECUTABLES: ""
 
 jobs:
-  build:
+  check_coding_style:
     runs-on: archlinux-latest
+    container:
+      image: ghcr.io/epitech/coding-style-checker:latest
+      ports:
+        - 80
     steps:                                              # <-- must use actions/checkout before mirroring!
       - uses: actions/checkout@v3
         with:
@@ -24,4 +29,5 @@ jobs:
             git@github.com:Chi-Iroh/Chocolatine.git
           ssh_private_key:                              # <-- use 'secrets' to pass credential information.
             ${{ secrets.SSH }}
+      - run: check.sh $(pwd) $(pwd)
 
