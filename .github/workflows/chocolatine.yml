@@ -31,6 +31,6 @@ jobs:
       - uses: pixta-dev/repository-mirroring-action@v1
         with:
           target_repo_url:
-            "$MIRROR_URL"
+            ${{ env.MIRROR_URL }}
           ssh_private_key:                              # <-- use 'secrets' to pass credential information.
             ${{ secrets.SSH }}
