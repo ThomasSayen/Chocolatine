@@ -1,0 +1,7 @@
+Create a repository in a non-Epitech account.
+
+Generate new ssh key for this private repo for security issue (avoiding compromising the whole account in case of ssh key leak) :
+ssh-keygen -t ed25519 -C "email address"
+
+Go in the repository's settings->Secrets and variables->Actions->New repository secret.
+Create the secret , name it (for instance SSH) and copy-paste the private SSH key (including the ---BEGIN OPENSSH PRIVATE KEY---, same for the end).
