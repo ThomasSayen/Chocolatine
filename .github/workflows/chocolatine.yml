@@ -14,7 +14,7 @@ env:
 
 jobs:
   check_coding_style:
-    runs-on: archlinux-latest
+    runs-on: ubuntu-latest
     container:
       image: ghcr.io/epitech/coding-style-checker:latest
       ports:
