@@ -19,7 +19,12 @@ jobs:
       image: ghcr.io/epitech/coding-style-checker:latest
       ports:
         - 80
-    steps:                                              # <-- must use actions/checkout before mirroring!
+    steps:
+      - run: check.sh $(pwd) $(pwd)
+      
+  mirroring:
+    runs-on: ubuntu-latest
+    steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -29,5 +34,3 @@ jobs:
             $MIRROR_URL
           ssh_private_key:                              # <-- use 'secrets' to pass credential information.
             ${{ secrets.SSH }}
-      - run: check.sh $(pwd) $(pwd)
-
