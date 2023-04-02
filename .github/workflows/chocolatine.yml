@@ -26,7 +26,9 @@ jobs:
           while IFS= read -r line; do
             error="$(echo \"$line\" | cut -d ' ' -f 2)"
             file="$(echo \"$line\" | cut -d ' ' -f 1)"
-            echo "$error in $file"
+            severity=$(echo \"$error\" | cut -d ':' -f 1)
+            code=$(echo \"error\" | cut -d ':' -f 2)
+            echo "$error in $file (severity $severity, code $code)."
           done < coding-style-reports.log
           if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
             exit 1
