@@ -26,10 +26,13 @@ jobs:
           for line in $(cat coding-style-reports.log); do
             err=`awk '{print $2}'`
             file=`awk '{print $1}'`
-            echo err
-            echo file
+            echo $err
+            echo $file
             echo "-------------"
           done
+          if [[ "$(cut $(du -b coding_style_reports.log) -d ' ' -f 1)" != "0" ]]; then
+            ::exit::failure
+          fi
       
   check_program_compilation:
     runs-on: ubuntu-latest
