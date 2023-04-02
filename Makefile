@@ -14,6 +14,7 @@ all: $(OBJ)
 	gcc $(OBJ)
 
 clean:
+	echo $(OBJ)
 	rm -f $(OBJ)
 
 fclean: clean
