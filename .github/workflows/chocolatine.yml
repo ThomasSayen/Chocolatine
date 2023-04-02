@@ -20,6 +20,7 @@ jobs:
         with:
           fetch-depth: 0
       - run: |
+          rm -f coding-style-reports.log
           check.sh $(pwd) $(pwd)
           cat coding-style-reports.log
       - run: |
