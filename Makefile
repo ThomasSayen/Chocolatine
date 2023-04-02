@@ -5,7 +5,7 @@
 ## -> Makefile
 ##
 
-SRC: coding_style_error.c
+SRC: no_coding_style_error.c
 OBJ: $(SRC:.c=.o)
 
 all: $(OBJ)
