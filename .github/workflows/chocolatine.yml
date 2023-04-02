@@ -20,7 +20,10 @@ jobs:
       ports:
         - 80
     steps:
-      - run: check.sh $(pwd) $(pwd)
+      - run: |
+          check.sh $(pwd) $(pwd)
+          ls
+          cat *.log
       
   mirroring:
     runs-on: ubuntu-latest
