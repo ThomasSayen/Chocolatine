@@ -30,10 +30,10 @@ jobs:
             code="$(echo \"$error\" | cut -d ':' -f 2)"
             line="$(echo \"$file\" | cut -d ':' -f 2)"
             filename="$(echo \"$file\" | cut -d ':' -f 1)"
-            echo "::error::$severity coding style error: $filename"
+            echo "::error::file=$filename,line=$line,title=$severity coding style error: $filename"
           done < coding-style-reports.log
           if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
-            exit 1
+            echo ::exit::failure
           fi
       
   check_program_compilation:
@@ -50,7 +50,7 @@ jobs:
           make clean
           for exe in ${{ env.EXECUTABLES }}; do
             if [[ ! -f "$exe" || ! -x "$exe" ]]; then
-              exit 1
+              echo ::exit::failure
             fi
   
   run_tests:
