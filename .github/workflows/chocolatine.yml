@@ -23,13 +23,11 @@ jobs:
           check.sh $(pwd) $(pwd)
           cat coding-style-reports.log
       - run: |
-          for line in $(cat coding-style-reports.log); do
-            err="$(echo $line | cut -d ' ' -f 2)"
-            file="$(echo $line | cut -d ' ' -f 1)"
-            echo $err
-            echo $file
-            echo "-------------"
-          done
+          while IFS= read -r line; do
+            error="$(echo \"$line\" | cut -d ' ' -f 2)"
+            file="$(echo \"$line\" | cut -d ' ' -f 1)"
+            echo "$error in $file"
+          done < my_filename.txt
           if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
             exit 1
           fi
