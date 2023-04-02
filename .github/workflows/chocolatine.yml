@@ -27,8 +27,8 @@ jobs:
             error="$(echo \"$line\" | cut -d ' ' -f 2)"
             file="$(echo \"$line\" | cut -d ' ' -f 1)"
             severity=$(echo \"$error\" | cut -d ':' -f 1)
-            code=$(echo \"error\" | cut -d ':' -f 2)
-            echo "$error in $file (severity $severity, code $code)."
+            code=$(echo \"$error\" | cut -d ':' -f 2)
+            echo -e "::error::$severity coding style error: $file\n$code"
           done < coding-style-reports.log
           if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
             exit 1
@@ -48,7 +48,7 @@ jobs:
           make clean
           for exe in ${{ env.EXECUTABLES }}; do
             if [[ ! -f "$exe" || ! -x "$exe" ]]; then
-              ::exit::failure
+              exit 1
             fi
   
   run_tests:
