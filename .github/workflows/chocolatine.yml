@@ -27,7 +27,7 @@ jobs:
             error="$(echo \"$line\" | cut -d ' ' -f 2)"
             file="$(echo \"$line\" | cut -d ' ' -f 1)"
             echo "$error in $file"
-          done < my_filename.txt
+          done < coding-style-reports.log
           if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
             exit 1
           fi
