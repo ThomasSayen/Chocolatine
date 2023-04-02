@@ -9,15 +9,15 @@ SRC: no_coding_style_error.c
 OBJ: $(SRC:.c=.o)
 
 all: $(OBJ)
-  gcc $(OBJ)
+    gcc $(OBJ)
 
 clean:
-  rm -f $(OBJ)
+    rm -f $(OBJ)
 
 fclean: clean
-  rm a.out
+    rm a.out
 
 re: | fclean all
 
 run_tests:
-  echo "All tests passed."
+    echo "All tests passed."
