@@ -23,6 +23,7 @@ jobs:
           check.sh $(pwd) $(pwd)
           cat coding-style-reports.log
       - run: |
+          IFS=
           while IFS= read -r line; do
             error="$(echo \"$line\" | cut -d ' ' -f 2)"
             file="$(echo \"$line\" | cut -d ' ' -f 1)"
