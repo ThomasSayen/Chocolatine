@@ -5,8 +5,8 @@
 ## -> Makefile
 ##
 
-SRC: no_coding_style_error.c
-OBJ: $(SRC:.c=.o)
+SRC	=	no_coding_style_error.c
+OBJ	=	$(SRC:.c=.o)
 
 all: $(OBJ)
 	echo $(SRC)
