@@ -24,13 +24,13 @@ jobs:
           cat coding-style-reports.log
       - run: |
           for line in $(cat coding-style-reports.log); do
-            err=`awk '{print $2}'`
-            file=`awk '{print $1}'`
+            err="$(echo $line | cut -d ' ' -f 2)"
+            file="$(echo $line | cut -d ' ' -f 1)"
             echo $err
             echo $file
             echo "-------------"
           done
-          if [[ "$(cut $(du -b coding-style-reports.log) -d ' ' -f 1)" != "0" ]]; then
+          if [[ "$(du -b coding-style-reports.log | cut -d ' ' -f 1)" != "0" ]]; then
             exit 1
           fi
       
