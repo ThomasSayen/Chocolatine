@@ -22,8 +22,7 @@ jobs:
     steps:
       - run: |
           check.sh $(pwd) $(pwd)
-          ls
-          cat *.log
+          cat coding-style-reports.log
       
   mirroring:
     runs-on: ubuntu-latest
