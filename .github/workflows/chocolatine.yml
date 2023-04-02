@@ -27,7 +27,7 @@ jobs:
           while IFS= read -r line; do
             error="$(echo $line | cut -d ' ' -f 2)"
             file="$(echo $line | cut -d ' ' -f 1)"
-            severity=$"(echo $error | cut -d ':' -f 1)"
+            severity="$(echo $error | cut -d ':' -f 1)"
             code="$(echo $error | cut -d ':' -f 2)"
             line="$(echo $file | cut -d ':' -f 2)"
             filename="$(echo $file | cut -d ':' -f 1)"
