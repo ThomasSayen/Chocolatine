@@ -30,8 +30,8 @@ jobs:
             echo $file
             echo "-------------"
           done
-          if [[ "$(cut $(du -b coding_style_reports.log) -d ' ' -f 1)" != "0" ]]; then
-            ::exit::failure
+          if [[ "$(cut $(du -b coding-style-reports.log) -d ' ' -f 1)" != "0" ]]; then
+            exit 1
           fi
       
   check_program_compilation:
